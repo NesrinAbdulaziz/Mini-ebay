@@ -16,9 +16,33 @@ export class StoreComponent implements OnInit {
   seller: String;
   showModal: String;
   showSeller: String;
+  admin: String;
+  manager: String;
   constructor(private userService:UserService, private productsService: ProductsService) { }
 
   ngOnInit() {
+    var user = this.userService.getUser();
+    if(user){
+      if(user.userType=='manager')
+      {
+        this.manager = 'visible';
+        this.admin = 'hidden';
+      }
+      else
+      if(user.userType=='admin')
+      {
+        this.admin = 'visible';
+        this.manager = 'visible';
+      }
+      else{
+        this.admin = 'hidden';
+        this.manager = 'hidden';
+      }
+    }
+    else{
+      this.admin = 'hidden';
+      this.manager = 'hidden';
+    }
     this.getProducts();
   }
   checkSeller(sellerName:String):String{
@@ -37,7 +61,7 @@ export class StoreComponent implements OnInit {
     };
     this.productsService.updateProduct(product,this.id).subscribe(function (res) {
       if (res.msg === 'Product was updated successfully.') {
-        alert('successfully updated');
+        alert('successfully updated, refresh to review');
         this.ngOnInit();
       }
       else {
@@ -51,7 +75,7 @@ export class StoreComponent implements OnInit {
   }
   deleteProduct(id: string){
     this.productsService.deleteProduct(id).subscribe(function (res) {
-        alert(res.msg);
+        alert(res.msg+', refresh to review');
         this.ngOnInit();
     },
     function(error){
@@ -66,7 +90,7 @@ export class StoreComponent implements OnInit {
       sellerName: this.seller
     };
     this.productsService.createProduct(product).subscribe(function (res) {
-        alert(res.msg);
+        alert(res.msg+', refresh to review');
         this.ngOnInit();
     },
     function(error){

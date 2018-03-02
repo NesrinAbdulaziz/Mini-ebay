@@ -1,7 +1,7 @@
 <div class="store-card">
     <div class="store-header">
       <span style="font-size:38px;color:black;margin:10px">Products:</span>
-      <button id="confirm" (click)="this.showProductModal(null)">Add</button>
+      <button id="confirm" [style.visibility]="this.admin"(click)="this.showProductModal(null)">Add</button>
     </div>
     <div *ngIf="this.products">
       <ul *ngFor="let product of this.products">
@@ -11,8 +11,8 @@
           <h5>Seller: {{product.sellerName}}</h5>
           <h5>Created at: {{product.createdAt| date}}</h5>
           <h5>Updated at: {{product.updatedAt| date}}</h5>
-          <button id="confirm" (click)="this.showProductModal(product._id)" >Edit</button>
-          <button id="confirm" (click)="this.deleteProduct(product._id)">Delete</button>
+          <button id="confirm" [style.visibility]="this.manager" (click)="this.showProductModal(product._id)" >Edit</button>
+          <button id="confirm" [style.visibility]="this.manager" (click)="this.deleteProduct(product._id)" >Delete</button>
         </div>
       </ul>
   </div>
