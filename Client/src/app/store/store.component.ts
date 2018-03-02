@@ -21,19 +21,14 @@ export class StoreComponent implements OnInit {
   ngOnInit() {
     this.getProducts();
   }
+  checkSeller(sellerName:String):String{
+    if(sellerName==='nesrin')
+    return '2';
+    else
+    return null;
+  }
   getProducts(){
-    this.productsService.getProducts().subscribe(function (res) {
-      if (res.msg === 'Products retrieved successfully.') {
-        this.products == res.data;
-        console.log(this.products);
-      }
-      else {
-        alert(res.msg);
-      }
-    },
-    function(error){
-      alert("wrong name");
-    });
+    this.productsService.getProducts().subscribe(res=>this.products = res.data);
   }
   updateProduct(){
     var product = {
@@ -43,6 +38,7 @@ export class StoreComponent implements OnInit {
     this.productsService.updateProduct(product,this.id).subscribe(function (res) {
       if (res.msg === 'Product was updated successfully.') {
         alert('successfully updated');
+        this.ngOnInit();
       }
       else {
         alert(res.msg);
@@ -51,12 +47,12 @@ export class StoreComponent implements OnInit {
     function(error){
       alert('failed');
     });
-    this.getProducts();
 
   }
   deleteProduct(id: string){
     this.productsService.deleteProduct(id).subscribe(function (res) {
         alert(res.msg);
+        this.ngOnInit();
     },
     function(error){
       alert('failed');
@@ -71,11 +67,12 @@ export class StoreComponent implements OnInit {
     };
     this.productsService.createProduct(product).subscribe(function (res) {
         alert(res.msg);
+        this.ngOnInit();
     },
     function(error){
       alert('failed');
     });
-    this.getProducts();
+
   }
   showProductModal(id:String){
     this.showModal='block';

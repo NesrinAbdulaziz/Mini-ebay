@@ -1,25 +1,22 @@
 <div class="store-card">
-    <div class = "store-header">
-      <h2>Products:</h2>
-      <span class="product-button" (click)="this.showProductModal(null)">add</span>
+    <div class="store-header">
+      <span style="font-size:38px;color:black;margin:10px">Products:</span>
+      <button id="confirm" (click)="this.showProductModal(null)">Add</button>
     </div>
     <div *ngIf="this.products">
-    <div class = "store-body">
       <ul *ngFor="let product of this.products">
-        <div class="product-card">
-          <h5><b>Item: {{product.name}}</b></h5>
-          <span class="product-button" (click)="this.showProductModal(product._id)">edit</span>
-          <span class="product-button" (click)="this.deleteProduct(product._id)">delete</span>
-          <p>Price: {{product.price | currency}}</p>
-          <p>Seller: {{product.sellerName}}</p>
-          <p>Created at: {{product.createdAt| date}}</p>
-          <p>Updated at: {{product.updatedAt| date}}</p>
+        <div *ngIf="this.checkSeller(product.sellerName)"class="product-card">
+          <h4><b>Item: {{product.name}}</b></h4>
+          <h5>Price: {{product.price | currency}}</h5>
+          <h5>Seller: {{product.sellerName}}</h5>
+          <h5>Created at: {{product.createdAt| date}}</h5>
+          <h5>Updated at: {{product.updatedAt| date}}</h5>
+          <button id="confirm" (click)="this.showProductModal(product._id)" >Edit</button>
+          <button id="confirm" (click)="this.deleteProduct(product._id)">Delete</button>
         </div>
-
       </ul>
-    </div>
   </div>
-  </div>
+</div>
   <div id="myModal" class="modal" [style.display]="this.showModal">
     <div class="modal-content">
       <div class="modal-header">
@@ -27,12 +24,18 @@
         <span class="product-button" (click)="this.closeModal()">&times;</span>
       </div>
       <div class="modal-body">
-        <label for="Name">Product name: </label>
-        <input [(ngModel)]="this.pname" placeholder="type the product name">
-        <label for="Price">Product price: </label>
-        <input type = "number" [(ngModel)]="this.pprice" placeholder="type the product price">
-        <label for="Seller" [style.visibility]="this.showSeller">Product Seller: </label>
-        <input [(ngModel)]="this.seller" placeholder="type the product seller" [style.visibility]="this.showSeller">
+        <div>
+          <label for="Name" [style.display]="block">Product name: </label>
+          <input [(ngModel)]="this.pname" placeholder="type the product name">
+        </div>
+        <div>
+          <label for="Price" [style.display]="block">Product price: </label>
+          <input type = "number" [(ngModel)]="this.pprice" placeholder="type the product price">
+        </div>
+        <div>
+          <label for="Seller" [style.visibility]="this.showSeller" [style.display]="block">Product Seller: </label>
+          <input [(ngModel)]="this.seller" placeholder="type the product seller" [style.visibility]="this.showSeller">
+        </div>
         <button id="confirm" (click)="this.execute()">confirm</button>
       </div>
     </div>

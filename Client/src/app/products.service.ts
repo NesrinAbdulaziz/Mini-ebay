@@ -16,7 +16,7 @@ export class ProductsService {
   }
   updateProduct(product: any, productId: String): Observable<any> {
     var url = 'http://localhost:3000/api/product/updateProduct/'+productId;
-    return this.http.post<any>(url,product);
+    return this.http.patch<any>(url,product);
   }
   deleteProduct(productId: String): Observable<any> {
     var url = 'http://localhost:3000/api/product/deleteProduct/'+productId;
