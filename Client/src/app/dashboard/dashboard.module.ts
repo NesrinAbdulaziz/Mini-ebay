@@ -7,10 +7,10 @@ import { DashboardComponent } from './dashboard.component';
 import { CompanyComponent } from './company/company.component';
 import { CartComponent } from '../cart/cart.component';
 import { FormsModule } from '@angular/forms';
-
+import{ StoreComponent} from '../store/store.component';
 @NgModule({
   imports: [ThemeModule, DashboardRoutingModule, FormsModule],
-  declarations: [DashboardComponent, CompanyComponent, CartComponent],
+  declarations: [StoreComponent,DashboardComponent, CompanyComponent, CartComponent],
   entryComponents: [],
   providers: []
 })

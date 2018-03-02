@@ -40,6 +40,25 @@ module.exports.getProducts = function(req, res, next) {
     });
   });
 };
+module.exports.getProductsBySeller = function(req, res, next) {
+  if (!Validations.isString(req.params.seller)) {
+    return res.status(422).json({
+      err: null,
+      msg: 'Seller name must be valid',
+      data: null
+    });
+  }
+  Product.find({ sellerName : req.params.seller}).exec(function(err, products) {
+    if (err) {
+      return next(err);
+    }
+    res.status(200).json({
+      err: null,
+      msg: 'Products retrieved successfully.',
+      data: products
+    });
+  });
+};
 
 module.exports.getProductsBelowPrice = function(req, res, next) {
   if (!Validations.isNumber(req.params.price)) {

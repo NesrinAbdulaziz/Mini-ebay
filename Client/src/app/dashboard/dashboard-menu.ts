@@ -1,5 +1,5 @@
 import { NbMenuItem } from '@nebular/theme';
-
+import { StoreComponent} from '../store/store.component';
 export const MENU_ITEMS: NbMenuItem[] = [
   {
     title: 'Dashboard',
@@ -8,9 +8,9 @@ export const MENU_ITEMS: NbMenuItem[] = [
     home: true
   },
   {
-    title: 'Items',
+    title: 'Store',
     icon: 'fa fa-shopping-basket',
-    link: '/dashboard/items'
+    link: '/dashboard/store'
   },
   {
     title: 'Cart',

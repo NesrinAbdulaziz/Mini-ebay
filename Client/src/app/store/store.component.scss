@@ -1,0 +1,118 @@
+.store-card {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    border-radius: 5px; /* 5px rounded corners */
+    width: 100%;
+    background-color: white;
+    padding: 0px;
+    position: relative;
+    margin: 0px 0px 4px 0px;
+    clear: both;
+    overflow: hidden;
+
+}
+.store-header {
+    padding: 4px 8px;
+    background-color: rgb(134, 221, 112);
+    color: white;
+    font-family: sans-serif;
+    font-size: 32px;
+}
+
+.store-body {
+  padding: 4px 8px;
+  font-family: sans-serif;
+  font-size: 2vw;}
+
+.product-card {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    border-radius: 5px; /* 5px rounded corners */
+    width: 32%;
+    background-color: rgb(134, 221, 112);
+    padding: 8px;
+    margin: 4px;
+    float: left;
+    position: relative;
+
+}
+
+/* On mouse-over, add a deeper shadow */
+.product-card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+.product-button {
+    color: gray;
+    float: right;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.product-button:hover,
+.product-button:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modal {
+    position: fixed;
+    z-index: 1;
+    padding-top: 100px;
+    left: 0;
+    top: 0;
+    overflow: auto;
+    font-family: sans-serif;
+    font-size: 2vw;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+}
+.modal-content {
+    position: relative;
+    background-color: #fefefe;
+    margin: 100px 300px;
+    padding: 0;
+    border: 0px solid #888;
+    font-family: sans-serif;
+    font-size: 24px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    -webkit-animation-name: animatetop;
+    -webkit-animation-duration: 0.4s;
+    animation-name: animatetop;
+    animation-duration: 0.4s
+}
+
+@-webkit-keyframes animatetop {
+    from {top:-300px; opacity:0}
+    to {top:0; opacity:1}
+}
+
+@keyframes animatetop {
+    from {top:-300px; opacity:0}
+    to {top:0; opacity:1}
+}
+.modal-header {
+    padding: 4px 32px;
+    background-color: rgb(134, 221, 112);
+    color: white;
+    font-family: sans-serif;
+    font-size: 24px;
+}
+
+.modal-body {
+  padding: 16px 32px;
+  font-family: sans-serif;
+  font-size: 24px;}
+
+  #confirm {
+      background-color: rgb(134, 221, 112);
+      border-radius: 0.5vw;
+      border-style: none;
+      font-family: sans-serif;
+      font-size: 24px;
+      padding: 0.8vw;
+  }
+  #confirm:hover {
+      background-color: rgb(147, 240, 124);
+  }
